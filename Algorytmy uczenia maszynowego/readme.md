@@ -1,0 +1,55 @@
+Algorytm k – najbliższych sąsiadów
+
+  Algorytm k-najbliższych sąsiadów (k-NN) to metoda uczenia maszynowego, która wykorzystuje odległości między przykładami w przestrzeni cech do przewidywania etykiet klas (klasyfikacja) lub wartości (regresja) dla nowych przykładów. Algorytm k-NN polega na znalezieniu k najbliższych sąsiadów nowego przykładu w zbiorze treningowym i opieraniu przewidywań na etykietach lub wartościach tych sąsiadów. Poniżej przedstawiona została kolejność działania algorytmu:
+  
+  1. Przygotowanie zbioru treningowego:
+  Algorytm k-NN rozpoczyna się od posiadania zbioru treningowego, który składa się z przykładów wraz z przypisanymi im etykietami klas lub wartościami. Każdy przykład jest reprezentowany jako punkt w przestrzeni cech, gdzie każda cecha odpowiada jednej zmiennej. Ważne jest, aby dane treningowe były dobrze przygotowane, a cechy mogą wymagać normalizacji lub skalowania, aby zapewnić odpowiednią interpretację odległości.
+  
+  2. Wybór liczby sąsiadów (k):
+  W kolejnym kroku należy wybrać liczbę sąsiadów (k), która określa, ile najbliższych sąsiadów będzie brane pod uwagę podczas klasyfikacji nowego przykładu. Wybór odpowiedniej wartości k jest ważny i może wpływać na wydajność i skuteczność algorytmu. Zbyt mała wartość k może prowadzić do nadmiernego dopasowania, podczas gdy zbyt duża wartość k może prowadzić do niedokładności.
+  
+  3. Obliczanie odległości:
+  Dla nowego przykładu, dla którego chcemy przewidzieć etykietę klasy lub wartość, oblicza się odległość między tym przykładem a każdym przykładem w zbiorze treningowym. Najczęściej stosowaną miarą odległości jest odległość euklidesowa, która oblicza odległość między dwoma punktami jako pierwiastek sumy kwadratów różnic w wartościach cech. Istnieją także inne miary odległości, takie jak odległość Manhattan czy odległość Minkowskiego.
+  4. Wybór k najbliższych sąsiadów:
+  Następnie, na podstawie obliczonych odległości, wybierane są k najbliższych sąsiadów do nowego przykładu. Sąsiedztwo może być wybierane na podstawie najmniejszych odległości lub największych podobieństw, w zależności od miary odległości.
+  
+  5. Klasyfikacja:
+  W przypadku klasyfikacji, k najbliższych sąsiadów głosuje na przynależność do konkretnej klasy, a klasa z największą liczbą głosów zostaje przewidziana dla nowego przykładu. Na przykład, kiedy liczba sąsiadów będzie wynosiła k=10, na podstawie obliczonej odległości między nowym punktem, a wszystkimi punkami w zbiorze zostanie znalezionych 10 najbliższych sąsiadów. Jeżeli spośród tych sąsiadów 5 należy do klasy A, 3 do klasy B i 1 do klasy C, to nowy punkt zostanie przypisany do klasy A, ze względu na najczęściej występującą klasę w promieniu. W sytuacji remisu pomiędzy klasami, należy zastosować dodatkowe kryteria doboru.
+
+Perceptron One-vs-all
+
+  Perceptron one-vs-all (jeden kontra reszta) jest algorytmem stosowanym w zadaniach klasyfikacji wieloklasowej, gdy mamy zbiór danych zawierający więcej niż dwie klasy. Polega na trenowaniu wielu perceptronów binarnych, z których każdy jest odpowiedzialny za rozróżnianie jednej klasy od pozostałych. Poniżej przedstawiona została kolejność działania algorytmu:
+  
+  1. Przygotowanie zbioru danych:
+  Algorytm perceptronu one-vs-all rozpoczyna się podzielenia bazy danych na poszczególne zbiory. Trenowanie klasyfikatora odbywa się na zbiorze treningowym, który zawiera przykłady należące do różnych klas. Każdy przykład jest opisany zestawem cech, które są reprezentowane jako wektor. Etykiety klas są przypisane do przykładów, gdzie każda klasa ma unikalną etykietę.
+
+  2. Inicjalizacja perceptronów:
+  Dla każdej klasy w zbiorze danych, inicjalizuje się osobny perceptron binarny. Liczba perceptronów odpowiada liczbie klas w zbiorze danych.
+  
+  3. Trenowanie perceptronów:
+  Dla każdej klasy, iteracyjnie trenuje się odpowiedni perceptron binarny. Klasa, która jest trenowana, jest traktowana jako klasa pozytywna, a pozostałe klasy są traktowane jako klasa negatywna. W trakcie treningu, perceptron jest uczony na podstawie reguły uczenia perceptronu, która polega na aktualizacji wag perceptronu w celu minimalizacji błędu klasyfikacji. Wagi perceptronu są dostosowywane na podstawie cech przykładów treningowych, a proces ten jest powtarzany do momentu, gdy perceptron osiąga zadowalającą wydajność lub zostaje osiągnięta maksymalna liczba iteracji.
+  
+  4. Klasyfikacja nowych przykładów:
+  Po zakończeniu treningu wszystkich perceptronów, algorytm perceptronu one-vs-all może być używany do klasyfikacji nowych przykładów. Dla nowego przykładu, każdy perceptron wykonuje predykcję na podstawie obliczeń liniowych między wagami perceptronu a cechami
+  nowego przykładu. Klasa przypisywana do nowego przykładu jest klasą, której perceptron osiągnął najwyższy wynik lub największe przypuszczenie.
+
+MultiLayerPerceptron
+
+  MultilayerPerceptron (MLP) to jedna z podstawowych architektur sztucznych sieci neuronowych. Składa się z co najmniej trzech warstw: warstwy wejściowej, jednej lub więcej warstw ukrytych oraz warstwy wyjściowej. MLP jest również znany jako sieć neuronowa z propagacją w przód. Pierwsza warstwa MLP to warstwa wejściowa, która przyjmuje dane wejściowe, np. cechy lub piksele obrazu. Każda cecha lub piksel jest reprezentowany jako jednostka wejściowa, a wartość tej jednostki odpowiada wartości cechy. MLP może zawierać jedną lub więcej warstw ukrytych między warstwą wejściową a warstwą wyjściową. Każda warstwa ukryta składa się z zestawu jednostek zwanych neuronami lub węzłami. Każdy neuron w warstwie ukrytej ma swoje wagi i oblicza ważoną sumę wejść, a następnie stosuje funkcję aktywacji, aby wygenerować wartość wyjściową. Ostatnią warstwą MLP jest warstwa wyjściowa, która generuje ostateczne wyniki predykcji lub klasyfikacji. Liczba jednostek wyjściowych w tej warstwie zależy od liczby klas lub rodzaju wyjścia, które chcemy przewidywać. Jak wcześniej wspomniano MLP działa w trybie propagacji w przód, co oznacza, że dane wejściowe przepływają przez sieć od warstwy wejściowej do warstwy wyjściowej bez żadnych cykli. Każda jednostka w warstwie ukrytej i warstwie wyjściowej oblicza ważoną sumę wejść na podstawie wag i wartości wejściowych, a następnie stosuje funkcję aktywacji, aby wygenerować wartość wyjściową. Popularne funkcje aktywacji stosowane w MLP to np. sigmoid, tangens hiperboliczny (tanh) lub funkcja ReLU (Rectified Linear Unit). 
+  
+  Jak w każdym innym klasyfikatorze przed rozpoczęciem klasyfikacji należy podzielić bazę danych na zbiory. Trenowanie MLP polega na dostosowywaniu wag między jednostkami, aby zminimalizować błąd predykcji. Wykorzystuje się algorytm wstecznej propagacji błędu, który oblicza gradient błędu na podstawie porównania wartości predykcji z wartościami oczekiwanymi. Wagi są aktualizowane w kierunku przeciwnym do gradientu, aby zmniejszyć błąd. Proces trenowania jest powtarzany na wielu epokach, aż sieć neuronowa osiągnie satysfakcjonującą wydajność na zbiorze treningowym.
+
+Drzewo decyzyjne
+
+  Drzewo decyzyjne to popularny algorytm uczenia maszynowego wykorzystywany w zadaniach klasyfikacji i regresji. Opiera się na zbudowaniu struktury drzewa, która pomaga podejmować decyzje na podstawie sekwencji warunków. Drzewo decyzyjne składa się z węzłów i krawędzi, gdzie węzły reprezentują testy na cechy, a krawędzie łączą węzły w hierarchiczną strukturę.
+  
+  Proces tworzenia drzewa decyzyjnego zaczyna się od korzenia, który reprezentuje cały zbiór danych treningowych. W tym węźle wybierana jest cecha, która najlepiej dzieli zbiór danych na podgrupy o różnych klasach lub wartościach celu. Istnieje wiele metryk oceny jakości podziału, takich jak indeks Giniego, entropia czy wskaźnik informacyjny Gain. Po wyborze cechy, tworzone są nowe węzły dla każdej możliwej wartości tej cechy, a dane treningowe są podzielone na podgrupy zgodnie z tym podziałem. Proces tworzenia drzewa jest rekurencyjny. Dla każdego nowo utworzonego węzła ponownie wybiera się cechę. Dla każdej podgrupy danych, które trafiają do nowego węzła, wybierana jest kolejna najlepsza cecha i tworzone są kolejne węzły. Ten proces trwa aż do spełnienia pewnych warunków zatrzymania, na przykład gdy osiągnięta zostanie maksymalna głębokość drzewa, gdy podgrupa danych jest jednorodna pod względem klasy lub gdy nie można dalej podzielić danych na podgrupy.
+  
+  Kiedy proces tworzenia drzewa się zakończy, liście drzewa zawierają informacje o przewidywanej klasie lub wartości celu dla danego przypadku. Gdy nowe przypadki są podawane na wejście drzewa, przechodzą one przez kolejne węzły, aż dotrą do liścia. W liściu jest dokonywana predykcja na podstawie większości klas lub średniej wartości celu w przypadkach treningowych, które tam trafiły. Drzewa decyzyjne mają tendencję do dopasowywania się do danych treningowych i mogą być podatne na przeuczenie. Pruning to proces redukcji drzewa poprzez usunięcie niektórych węzłów lub połączenie pewnych gałęzi w celu poprawy ogólnej wydajności na danych testowych.
+
+Maszyna wektorów nośnych (SVM)
+
+  Głównym celem SVM jest znalezienie optymalnej hiperpłaszczyzny lub zestawu hiperpłaszczyzn w przestrzeni cech, które skutecznie rozdzielają przykłady należące do różnych klas lub oszacowują wartość celu w przypadku regresji. Klasyfikator SVM ma wiele zalet, takich jak zdolność do radzenia sobie z danymi o wysokiej wymiarowości i umiejętność generalizacji na nieznanych danych. Hiperpłaszczyzna to płaszczyzna o wymiarze o jeden mniejszym niż przestrzeń cech. W przypadku dwóch klas, SVM znajduje płaszczyznę, która maksymalizuje odległość między najbliższymi punktami obu klas (wektorami nośnymi) - tę odległość nazywamy marginesem. W przypadku, gdy dane nie są liniowo separowalne, SVM używa funkcji jądra do transformacji przestrzeni cech na wyższy wymiar, gdzie dane mogą być separowalne liniowo. Popularnymi funkcjami jądra są liniowe, wielomianowe i sigmoidalne. Wybór odpowiedniej funkcji jądra zależy od charakterystyki danych i problemu. Klasyfikator
+SVM stara się znaleźć hiperpłaszczyznę, która maksymalizuje margines między dwiema klasami.
+
+  Klasyfikator SVM formułuje problem optymalizacyjny jako zadanie minimalizacji funkcji celu, której celem jest minimalizacja błędu klasyfikacji i jednoczesne maksymalizowanie marginesu. Problem optymalizacyjny jest zazwyczaj nieliniowy i convex, a do jego rozwiązania stosuje się różne metody optymalizacyjne, takie jak metoda Lagrange'a, dualność SVM i optymalizacja gradientowa. W klasyfikatorze SVM istnieje parametr regularyzacji oznaczony jako C. Wartość ta kontroluje kompromis między dopasowaniem do danych treningowych a utrzymaniem szerokiego marginesu. Dla dużych wartości C, klasyfikator SVM będzie bardziej wrażliwy na pojedyncze punkty odstające i dopasuje się dokładniej do danych treningowych. Dla mniejszych wartości C, klasyfikator SVM będzie dążył do większego marginesu kosztem dopasowania do danych treningowych. Klasyfikator SVM potrafi rozwiązywać problemy wieloklasowe korzystając z metody one-vs-rest lub one-vs-one.
