@@ -1,70 +1,13 @@
-# Getting Started with Create React App
+Do analizy porównawczej popularnych rozwiązań z autorskim modelem oraz wygodniejszej obsługi została wykonana aplikacja z intuicyjnym, graficznym interfejsem. Zwalnia ona użytkownika z konieczności wpisywania skomplikowanych komend do konsoli programu. Opis można podzielić na dwie części: back-end i front-end.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Back-end:
+Głównym celem zaplecza programu (ang. Back-end) jest udostępnienie w formie API wcześniej przytoczonych przykładów wraz z autorskim modelem. Aplikacja została napisana jest w języku Python i opiera się na bibliotece FastAPI, która pozwala na integracje wielu domen i tworzenie lokalnych lub publicznych serwerów HTTP poprzez przyjmowanie oraz wysyłanie żądań z różnych źródeł. Każdy zaimplementowany model posiada własny punkt końcowy (ang. endpoint), POST lub GET. Przykładowo, DALL-E 2 przyjmuje opis obrazu wysłany przez użytkownika, generuje wynik w chmurze, a następnie zwraca go jako adres URL używając funkcji POST do serwera. Odwrotne żądanie zostało zastosowane dla Stable Diffusion v1.5, gdzie GET pobiera opis, przetwarza obraz na urządzeniu użytkownika, a następnie wysyła go w formie odpowiedzi. Autorski model nie wymaga tworzenia API, lecz jedynie importu funkcji generowania wyniku z opisu tekstowego, który jest pobierany i przesyłany na serwer.
 
-## Available Scripts
+Biblioteka FastAPI umożliwia również sprawdzenie poprawności działania programu nie posiadając utworzonego interfejsu. Jest to bardzo pomocne w początkowych etapach programowania aplikacji. W polu „prompt” można wpisać swój opis, a następnie przekazać go do generatora przyciskiem „Execute”. 
 
-In the project directory, you can run:
+Front-end:
+Front-end aplikacji został wykonany w języku programowania JavaScript, React z użyciem biblioteki Chakra UI. Celem jego jest odbieranie i wysyłanie żądań do poprzednio opisanego programu oraz obsługa interfejsu. 
+W górnej części okna umieszone zostało pole do wpisywania opisu tekstowego przez użytkownika. Poniżej znajdują się przyciski, za pomocą których należy wybrać odpowiedni generator. W oczekiwaniu na wynik wyświetlana jest animacja przetwarzania, zapewniająca zainteresowanego o poprawnym wczytaniu warunku i dokonaniu wyboru. Po zakończeniu procesu, wygenerowany obraz zostaje wyświetlony poniżej przycisków.W momencie wykonania operacji w błędnej kolejności pojawia się okno z komunikatem o treści błędu, podobna sytuacja następuje przy nieprawidłowości działania programu. 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://github.com/user-attachments/assets/71b0e7b7-7745-4533-8990-3496bb187a49)
