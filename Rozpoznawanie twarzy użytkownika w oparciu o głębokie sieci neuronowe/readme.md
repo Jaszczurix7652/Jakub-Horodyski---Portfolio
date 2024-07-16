@@ -13,4 +13,5 @@ Ostatnia warstwa gęsto połączona z ilością neuronów równą liczbie klas w
 Po zbudowaniu sieci konwolucyjnej model przechodzi do etapu kompilacji. W trakcie jej określany jest optymalizator, funkcja straty i metryki oceny modelu podczas treningu. Wykorzystywany jest ImageDataGenerator do generowania nowych przykładów treningowych przez zastosowanie różnych transformacji do oryginalnych obrazów. Model jest trenowany na danych treningowych z użyciem augmentacji danych, a wyniki są monitorowane na zestawie walidacyjnym. W celu wizualizacji wykresów dokładności i funkcji straty wykorzystywana jest biblioteka matplotlib. Wytrenowany model jest zapisywany do pliku "FR.h5" w celu późniejszego użycia bez konieczności ponownego trenowania.
 
 Wyniki modelu:
+
 ![image](https://github.com/user-attachments/assets/fc60832e-b995-4146-b680-e93c5483ce22)
