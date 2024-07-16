@@ -5,3 +5,7 @@ Wykorzystywana baza danych „Diamonds” autorstwa Ulrik Thyge Pedersena zamies
 W celu umożliwienia dokładnej analizy wszystkich danych zawartych w bazie, zmieniono dane tekstowe na liczbowe. W przypadku tego zbioru było to możliwe do zrobienia, ponieważ przedstawione dane tekstowe oznaczają stopień w skali GIA. W tym wypadku najwyższe, najlepsze stopnie klasyfikacji oznaczone są liczbą 0, a kolejne niższe stopnie kolejnymi liczbami dodatnimi. Usunięto również wiersze, w których wartości dla kolumn „x”, „y” lub „z” wynosiły 0.
 
 W celu predykcji ceny diamentu wykorzystano dwa modele regresji RandomForestRegressor oraz Extreme Gradient Boosting (XGBoost). Pierwszy z nich jest algorytmem opartym na drzewach decyzyjnych. Tworzy wiele drzew decyzyjnych i łączy ich wyniki, natomiast drugi to zbiorowy, bazujący na drzewach algorytm uczenia maszynowego, wykorzystujący strukturę wzmacniającą gradient. Została podjęta również próba użycia innych modeli takich jak LinearRegression, czy SVM, jednakże wyniki przez nie uzyskane były takie same lub gorsze niż te uzyskane za pomocą XGBoost i RandomForestRegressor.
+
+Wizualizacja wyników:
+
+![Plakat final](https://github.com/user-attachments/assets/d1a38048-7740-4c01-9aac-b122db5fb84b)
