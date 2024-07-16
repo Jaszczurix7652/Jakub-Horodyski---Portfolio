@@ -5,14 +5,19 @@ By móc zrealizować projekt został stworzony program pozwalający na zasymulow
 Program został podzielony na poszczególne klasy, pierwsza z nich „Player” pozwala na zdefiniowanie każdego z graczy. Przechowuje informacje o graczu oraz określa o ile chce podbić kwotę licytacji, uwzględniając przy tym cechy jego osobowości.
 
 Dla każdego gracza wykonywane są następujące funkcje:
+
 •	bid – funkcja odpowiedzialna za decyzję gracza o złożeniu oferty. Gracz podejmuje decyzję, czy podnieść stawkę i o jaką kwotę. Wykorzystuje informacje o aktualnych ofertach innych graczy, poprzednim wzroście wielkości oraz pozostałych graczach.
+
 •	minmax – działa w ramach ograniczonej przestrzeni stanów, analizując różne możliwe wartości podbicia stawki (do maksymalnie 10 jednostek lub dostępnego budżetu). Dla każdej możliwej oferty oblicza użyteczność na podstawie cech gracza. Następnie wybiera ofertę, która maksymalizuje użyteczność, i aktualizuje budżet gracza.
+
 •	utility – funkcja obliczająca wartości użyteczności danej oferty, uwzględniająca cechy gracza, wysokość podbicia ceny przedmiotu oraz informacji o pozostałych graczach.
 
 Druga klasa „Auction” ma za zadanie odpowiednie przeprowadzenie i zakończenie licytacji. Posiada ona informacje o licytowanym przedmiocie i śledzi przebieg aukcji pilnując o ile zwiększyła się kwota aukcji podczas każdej z rund. Klasa ta określa kiedy aukcja ma się zakończyć i ogłasza zwycięzcę.
 
 Dla każdej aukcji wykonywane są następujące funkcje:
+
 •	play – funkcja, która przeprowadza aukcję. Gracze składają oferty w rundach, aż zostanie tylko jeden gracz zdolny do dalszego podbijania stawki lub wszyscy gracze spasują. Metoda wyświetla wyniki każdej rundy oraz ogłasza zwycięzcę.
+
 •	plot_bid_history – funkcja ta generuje wykres przebiegu aukcji pokazując jaką kwotę licytacji złożył każdy z graczy podczas każdej z rund 
 
 Poza klasami znajduje się funkcja count_avg_bid, służy do obliczenia średnich wartości ofert składanych przez graczy w serii aukcji. Najpierw wyświetla historię ofert każdego gracza dla każdej aukcji. Następnie oblicza sumaryczne oferty graczy, uwzględniając każdą aukcję. Poprawia sumaryczne oferty, aby zapewnić, że długości historii ofert dla poszczególnych graczy są zgodne. Na koniec oblicza średnie wartości ofert dla każdego gracza.
