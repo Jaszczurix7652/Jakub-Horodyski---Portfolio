@@ -39,3 +39,7 @@ Algorytm kończy działanie, gdy osiągnięty zostanie ustalony próg błędu. J
 
 11. Dynamiczne Dostosowywanie Progów i Liczby Pikseli:
 Algorytm dynamicznie dostosowuje próg błędu w zależności od aktualnego błędu rekonstrukcji. Jeśli błąd jest mniejszy od progu, próg ten jest zmniejszany. Jeśli błąd jest większy niż próg błędu, liczba pikseli w próbce jest zwiększana. To elastyczne podejście pozwala na adaptację do warunków rekonstrukcji.
+
+Przykładowy wynik:
+![image](https://github.com/user-attachments/assets/d544b9e6-2981-417c-9692-4f3564bee864)
+
