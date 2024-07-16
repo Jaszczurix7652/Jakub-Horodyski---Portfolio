@@ -24,7 +24,7 @@ class ImageRequest(BaseModel):
 @app.post("/dalle")
 async def generate_image(image_request: ImageRequest):
     try:
-        client = OpenAI(api_key='sk-proj-HFvPGP92D4sDyJJgZY6xT3BlbkFJ69FYIoxpLP0nItnzEirx')
+        client = OpenAI(api_key='')
 
         response = client.images.generate(
             model="dall-e-2",
