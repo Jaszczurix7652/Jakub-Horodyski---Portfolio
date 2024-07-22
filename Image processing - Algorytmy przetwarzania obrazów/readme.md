@@ -1,3 +1,5 @@
+PL:
+
 Koncepcja SPC opiera się na zastosowaniu próbkowania sprzężonego, w którym piksele obrazu są pobierane w sposób nielosowy, ale zgodny z odpowiednio zaprojektowanym wzorcem próbkowania. Zamiast rejestrować pełny obraz na raz, SPC pobiera szereg pojedynczych próbek, a następnie na podstawie tych próbek dokonuje rekonstrukcji całego obrazu.
 Działanie SPC można podzielić na kilka etapów. Pierwszym krokiem jest przygotowanie wzorca próbkowania, który określa sposób, w jaki piksele będą pobierane. Wzorzec ten może mieć różne formy, takie jak wzorzec losowy, pseudolosowy lub deterministyczny. Wzorzec próbkowania jest istotny dla procesu rekonstrukcji obrazu, ponieważ wpływa na jakość odtworzenia.
 Kolejnym etapem jest akwizycja próbek pikseli. W tym przypadku, zamiast rejestrować pełne piksele, SPC pobiera pojedyncze wartości pikseli, które są zależne od wzorca próbkowania. Próbkowanie jest realizowane przez odpowiednie układy optyczne i detektor, które mierzą natężenie światła na poszczególnych punktach próbkowania.
@@ -49,3 +51,55 @@ Przykładowy wynik:
 
 ![image](https://github.com/user-attachments/assets/d544b9e6-2981-417c-9692-4f3564bee864)
 
+
+
+ENG:
+
+The SPC concept is based on the use of coupled sampling, in which image pixels are taken in a non-random manner, but according to a properly designed sampling pattern. Instead of capturing the full image at once, SPC takes a series of individual samples and then reconstructs the entire image based on these samples.
+The operation of SPC can be divided into several steps. The first step is to prepare a sampling pattern, which determines how the pixels will be sampled. This pattern can take various forms, such as a random pattern, pseudo-random pattern or deterministic pattern. The sampling pattern is important for the image reconstruction process because it affects the quality of the restoration.
+The next step is the acquisition of pixel samples. In this case, instead of recording full pixels, the SPC takes individual pixel values that depend on the sampling pattern. Sampling is carried out by appropriate optics and a detector that measure the light intensity at each sampling point.
+After sampling, the image reconstruction stage follows. It is based on the use of appropriate reconstruction algorithms that, based on the sampled pixels
+reconstruct the full image. These algorithms use knowledge of the sampling pattern and mathematical models to reconstruct the missing pixel information.
+
+1. FastAPI initialization:
+The program initializes the FastAPI framework at the beginning of its operation. This tool enables it to handle API interactions, facilitating communication between the frontend and backend. It imports the necessary libraries, such as numpy, cv2, PIL, as well as FastAPI and other related components. Creates an instance of the FastAPI application, which will be used to handle incoming requests from the frontend.
+
+2. Middleware CORS setup:
+The application configures middleware CORS (Cross-Origin Resource Sharing), which enables secure communication between the frontend and backend. It defines which sources can send requests to the application, which is important in terms of browser security.
+
+3. DCT Aperture Matrix Generating Function:
+Defines a function that generates a DCT aperture matrix with specified dimensions. These values will later be used for image transformation. This process involves creating an i, j grid, calculating the pitch factor, and then calculating the DCT matrix values according to the formula. The first row of the DCT matrix is set for the orthogonality of the transformation.
+
+4. Endpoint FastAPI for Image Processing:
+Creates an endpoint that handles the upload of image files. When a user uploads an image, the application reads the image, processes it according to the established logic (defined in the next function), and then returns the processed data as a JSON response.
+
+5. Function Processing Image in Loop:
+The process_image_in_loop function implements an iterative process for processing an image using a DCT transformation. As part of this process, random pixels are selected and optional impulse noise is added, especially when the input image contains noise. A DCT matrix is then created to transform the selected pixels. The next step is to process and reconstruct the image by applying the DCT transformation and its inverse process. 
+The algorithm dynamically adjusts the error threshold and the number of sampled pixels to adapt to the reconstruction conditions. The process continues until the mean-square error between the original and reconstructed images falls below a set threshold or the number of sampled pixels does not exceed a certain limit. During the iteration, result files are generated, such as DCT-transformed pixel mask images and reconstructed images. The termination condition ensures that the algorithm terminates when it obtains satisfactory results or reaches the sampling limit.
+
+6. Adjusting the Error Threshold and Number of Pixels in the Sample:
+The algorithm adjusts the error threshold and the number of pixels in the sample according to the current reconstruction error. If the error is less than the threshold, the threshold is reduced. If the error is greater than the error threshold, the number of pixels in the sample is increased. This dynamic approach allows more accurate image reconstruction depending on current conditions.
+
+7. Creating an Image from Sample Pixels:
+The loop iterates over a sample of pixels, setting the aperture color to gray (e.g., RGB: 101, 105, 97) in the DCT matrix. This color is set to visualize the DCT grid in the image. The processed sample is then saved as a PNG image.
+
+8. Recreating the Pixel Sample Image:
+A DCT transformation is applied to the processed pixel sample, and then an inverse DCT transformation is performed using the transposed DCT matrix. The reconstructed image is saved as a PNG file.
+
+9. Calculation of Mean Square Error:
+After reconstructing an image from a sample, the mean-square error between the original and reconstructed image is calculated. This error is used to make decisions about adjusting the error thresholds and the number of pixels in the sample.
+
+10. Algorithm Termination Condition:
+The algorithm terminates when a predetermined error threshold is reached. This is checked using a condition, e.g.allclose, which compares the original image with the reconstructed one, deciding whether the differences are acceptably small.
+
+11. Dynamic Adjustment of Thresholds and Pixel Count:
+The algorithm dynamically adjusts the error threshold depending on the current reconstruction error. If the error is less than the threshold, the threshold is reduced. If the error is greater than the error threshold, the number of pixels in the sample is increased. This flexible approach allows adaptation to reconstruction conditions.
+
+Image reconstruction process:
+
+![image](https://github.com/user-attachments/assets/1dfd8d17-bff4-47c2-86fd-9462ee72384a)
+
+
+Sample result:
+
+![image](https://github.com/user-attachments/assets/d544b9e6-2981-417c-9692-4f3564bee864)
