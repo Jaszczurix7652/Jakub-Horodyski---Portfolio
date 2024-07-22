@@ -35,7 +35,7 @@ Po upływie 10 sekund wartość średniej rezystywności jest sprowadzana do zer
 
 ENG:
 
-The purpose of this work is to analyze the feasibility of using an industrial arm robot to implement a selected industrial process related to the segregation of components
+The goal of this work is to analyze the feasibility of using an industrial arm robot to implement a selected industrial process related to the segregation of components
 The scope of work included:
 1. adaptation of an arm robot workstation to perform the selected industrial process;
 2. development and implementation of a laboratory station;
