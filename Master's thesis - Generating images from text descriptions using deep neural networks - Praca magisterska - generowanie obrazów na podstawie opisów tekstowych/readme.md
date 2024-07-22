@@ -22,7 +22,7 @@ Wyniki modelu:
 
 ENG:
 
-The goal of the thesis is research deep neural networks that generate images based on descriptions written in natural language. After implementing and training the deep networks, the obtained results were compared with the results of popular network models.
+The goal of the thesis is to research deep neural networks that generate images based on descriptions written in natural language. After implementing and training the deep networks, the obtained results were compared with the results of popular network models.
 The research aspect is the analysis of the impact of hyperparameters of the elements of the created model, training data sets and various natural language processing models on the process of conditional image generation.
 
 The image generator model based on text descriptions is a combination of the diffusion method and GAN networks.
