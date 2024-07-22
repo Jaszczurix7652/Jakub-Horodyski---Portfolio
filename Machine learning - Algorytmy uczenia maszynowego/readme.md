@@ -1,3 +1,5 @@
+PL:
+
 Algorytm k – najbliższych sąsiadów
 
   Algorytm k-najbliższych sąsiadów (k-NN) to metoda uczenia maszynowego, która wykorzystuje odległości między przykładami w przestrzeni cech do przewidywania etykiet klas (klasyfikacja) lub wartości (regresja) dla nowych przykładów. Algorytm k-NN polega na znalezieniu k najbliższych sąsiadów nowego przykładu w zbiorze treningowym i opieraniu przewidywań na etykietach lub wartościach tych sąsiadów. Poniżej przedstawiona została kolejność działania algorytmu:
@@ -53,3 +55,73 @@ Maszyna wektorów nośnych (SVM)
 SVM stara się znaleźć hiperpłaszczyznę, która maksymalizuje margines między dwiema klasami.
 
   Klasyfikator SVM formułuje problem optymalizacyjny jako zadanie minimalizacji funkcji celu, której celem jest minimalizacja błędu klasyfikacji i jednoczesne maksymalizowanie marginesu. Problem optymalizacyjny jest zazwyczaj nieliniowy i convex, a do jego rozwiązania stosuje się różne metody optymalizacyjne, takie jak metoda Lagrange'a, dualność SVM i optymalizacja gradientowa. W klasyfikatorze SVM istnieje parametr regularyzacji oznaczony jako C. Wartość ta kontroluje kompromis między dopasowaniem do danych treningowych a utrzymaniem szerokiego marginesu. Dla dużych wartości C, klasyfikator SVM będzie bardziej wrażliwy na pojedyncze punkty odstające i dopasuje się dokładniej do danych treningowych. Dla mniejszych wartości C, klasyfikator SVM będzie dążył do większego marginesu kosztem dopasowania do danych treningowych. Klasyfikator SVM potrafi rozwiązywać problemy wieloklasowe korzystając z metody one-vs-rest lub one-vs-one.
+
+
+
+ENG:
+
+The k-nearest neighbors algorithm
+
+  The k-nearest neighbors (k-NN) algorithm is a machine learning method that uses the distances between examples in the feature space to predict class labels (classification) or values (regression) for new examples. The k-NN algorithm involves finding the k nearest neighbors of a new example in the training set and basing predictions on the labels or values of those neighbors. The following is the sequence of operation of the algorithm:
+  
+  1. preparing the training set:
+  The k-NN algorithm begins by having a training set, which consists of examples with their associated class labels or values. Each example is represented as a point in the feature space, where each feature corresponds to one variable. It is important that the training data is well prepared, and the features may need to be normalized or scaled to ensure that the distance is properly interpreted.
+  
+  2. Select the number of neighbors (k):
+  In the next step, select the number of neighbors (k), which determines how many nearest neighbors will be considered when classifying a new example. Choosing the right value of k is important and can affect the efficiency and effectiveness of the algorithm. Too small a value of k can lead to over-fitting, while too large a value of k can lead to inaccuracy.
+
+  3. Distance calculation:
+  For a new example for which we want to predict a class label or value, the distance between that example and each example in the training set is calculated. The most commonly used distance measure is the Euclidean distance, which calculates the distance between two points as the root of the sum of the squares of the differences in feature values. There are also other distance measures, such as Manhattan distance or Minkowski distance.
+
+  4. Selection of k nearest neighbors:
+  Next, based on the calculated distances, the k nearest neighbors are selected for a new example. Neighbors can be selected on the basis of smallest distances or greatest similarities, depending on the distance measure.
+  
+  5. Classification:
+  In the case of classification, the k nearest neighbors vote to belong to a particular class, and the class with the highest number of votes is provided for the new example. For example, when the number of neighbors is k=10, 10 nearest neighbors will be found based on the calculated distance between the new point and all points in the set. If among these neighbors, 5 belong to class A, 3 to class B and 1 to class C, the new point will be assigned to class A, due to the most frequent class in the radius. If there is a tie between classes, additional selection criteria should be applied.
+
+
+One-vs-all perceptron
+
+  The one-vs-all (one versus the rest) perceptron is an algorithm used in multi-class classification tasks when we have a dataset containing more than two classes. It involves training multiple binary perceptrons, each of which is responsible for distinguishing one class from the others. The order in which the algorithm works is shown below:
+  
+  1. preparing the dataset:
+  The one-vs-all perceptron algorithm begins by dividing the database into individual sets. Training of the classifier is carried out on the training set, which contains examples belonging to different classes. Each example is described by a set of features, which are represented as a vector. Class labels are assigned to the examples, where each class has a unique label.
+
+  2. Initialization of perceptrons:
+  For each class in the dataset, a separate binary perceptron is initialized. The number of perceptrons corresponds to the number of classes in the dataset.
+
+  3. Perceptron training:
+   For each class, an appropriate binary perceptron is trained iteratively. The class that is trained is treated as a positive class and the remaining classes are treated as a negative class. During training, the perceptron is trained based on the perceptron learning rule, which consists in updating the perceptron weights to minimize the classification error. The perceptron weights are adjusted based on the characteristics of the training examples, and this process is repeated until the perceptron achieves satisfactory performance or the maximum number of iterations is reached.
+  
+   4. Classification of new examples:
+   Once all perceptrons have been trained, the one-vs-all perceptron algorithm can be used to classify new examples. For a new example, each perceptron makes a prediction based on a linear computation between the perceptron weights and the features
+new example. The class assigned to the new example is the class whose perceptron achieved the highest score or highest guess.
+
+
+MultiLayerPerceptron
+
+ MultilayerPerceptron (MLP) is one of the basic architectures of artificial neural networks. It consists of at least three layers: an input layer, one or more hidden layers, and an output layer. MLP is also known as forward propagation neural network. The first layer of MLP is the input layer, which accepts input data, e.g., image features or pixels. Each feature or pixel is represented as an input unit, and the value of this unit corresponds to the value of the feature. MLP may contain one or more hidden layers between the input layer and the output layer. Each hidden layer consists of a set of units called neurons or nodes. Each neuron in the hidden layer has its own weights and computes a weighted sum of the inputs and then applies an activation function to generate an output value. The last layer of MLP is the output layer, which generates the final prediction or classification results. The number of output units in this layer depends on the number of classes or type of output we want to predict. As previously mentioned, MLP works in forward propagation mode, which means that the input data flows through the network from the input layer to the output layer without any cycles. Each unit in the hidden layer and output layer calculates a weighted sum of inputs based on the weights and input values, and then applies an activation function to generate the output value. Popular activation functions used in MLP include sigmoid, hyperbolic tangent (tanh) or the ReLU (Rectified Linear Unit) function.
+
+ As in any other classifier, before starting classification, the database must be divided into sets. MLP training involves adjusting weights between units to minimize prediction error. An error backpropagation algorithm is used, which calculates the error gradient based on the comparison of the prediction values ​​with the expected values. The weights are updated in the opposite direction of the gradient to reduce error. The training process is repeated over many epochs until the neural network achieves satisfactory performance on the training set.
+
+
+Decision tree
+
+ Decision tree is a popular machine learning algorithm used in classification and regression tasks. It is based on building a tree structure that helps make decisions based on a sequence of conditions. A decision tree consists of nodes and edges, where the nodes represent feature tests and the edges connect the nodes in a hierarchical structure.
+
+ The process of creating a decision tree starts with the root, which represents the entire training data set. This node selects the feature that best divides the dataset into subgroups with different classes or goal values. There are many metrics for assessing the quality of a split, such as the Gini index, entropy, and the Gain information index. After selecting a feature, new nodes are created for each possible value of that feature, and the training data is divided into subgroups according to this division. The tree creation process is recursive. For each newly created node, a feature is selected again. For each subset of data that enters a new node, the next best feature is selected and additional nodes are created. This process continues until certain stopping conditions are met, such as when the maximum tree depth is reached, when a subgroup of data is class-homogeneous, or when the data cannot be further subgrouped.
+
+ When the tree creation process is complete, the leaves of the tree contain information about the predicted class or target value for that case. As new cases are fed into the tree, they pass through subsequent nodes until they reach a leaf. In the leaf, a prediction is made based on the majority of the classes or the average value of the target in the training cases that ended up there. Decision trees tend to adjust to training data and may be susceptible to overfitting. Pruning is the process of reducing a tree by removing some nodes or combining some branches to improve the overall performance on test data.
+
+Support vector machine (SVM)
+
+ The main goal of SVM is to find an optimal hyperplane or set of hyperplanes in the feature space that effectively separates examples belonging to different classes or estimates the value of the objective in the case of regression. The SVM classifier has many advantages, such as the ability to deal with high-dimensional data and the ability to generalize on unknown data. A hyperplane is a plane with a dimension one smaller than the feature space. In the case of two classes, SVM finds a plane that maximizes the distance between the closest points of both classes (support vectors) - this distance is called the margin. In case the data is not linearly separable, SVM uses kernel functions to transform the feature space to a higher dimension where the data can be linearly separable. Popular kernel functions are linear, polynomial, and sigmoidal. The choice of an appropriate kernel function depends on the characteristics of the data and the problem. Classifier
+SVM tries to find a hyperplane that maximizes the margin between two classes.
+
+ The SVM classifier formulates the optimization problem as an objective function minimization task, the goal of which is to minimize the classification error and simultaneously maximize the margin. The optimization problem is usually nonlinear and convex, and various optimization methods such as Lagrangian method, SVM duality, and gradient optimization are used to solve it. In the SVM classifier, there is a regularization parameter denoted C. This value controls the trade-off between fitting to the training data and maintaining a wide margin. For large values ​​of C, the SVM classifier will be more sensitive to single outliers and will fit the training data more closely. For smaller values ​​of C, the SVM classifier will strive for a larger margin at the expense of fitting the training data. The SVM classifier can solve multi-class problems using the one-vs-rest or one-vs-one method.
+ 
+  
+  
+
+  
+
