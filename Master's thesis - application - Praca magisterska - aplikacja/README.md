@@ -27,3 +27,5 @@ The FastAPI library also allows you to check the correct operation of the progra
 Front-end:
 The front-end of the application was made in the JavaScript programming language, React, using the Chakra UI library. Its purpose is to receive and send requests to the previously described program and to operate the interface.
 In the upper part of the window there is a field for entering a text description by the user. Below are the buttons to select the appropriate generator. While waiting for the result, a processing animation is displayed, assuring the interested party that the condition has been correctly loaded and the selection has been made. After the process is completed, the generated image is displayed below the buttons. When the operation is performed in the wrong order, a window appears with an error message, a similar situation occurs when the program does not operate properly.
+
+![image](https://github.com/user-attachments/assets/71b0e7b7-7745-4533-8990-3496bb187a49)
