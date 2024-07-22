@@ -1,3 +1,5 @@
+PL:
+
 Celem pracy jest wykonanie badań głębokich sieci neuronowych generujących obrazy na podstawie opisów sporządzonych w języku naturalnym. Po zaimplementowaniu i wytrenowaniu sieci głębokich zostało wykonane porównanie uzyskanych rezultatów z wynikami działania popularnych modeli sieci.
 Aspektem badawczym jest analiza wpływu hiperparametrów elementów stworzonego modelu, zbiorów danych treningowych oraz różnych modeli przetwarzana języka naturalnego na proces warunkowego generowania obrazów.
 
@@ -18,3 +20,22 @@ Wyniki modelu:
 ![Bez tytułu](https://github.com/user-attachments/assets/188a2d34-43b8-49dd-83d8-a6c23b153be9)
 
 
+ENG:
+
+The aim of the work is to research deep neural networks that generate images based on descriptions written in natural language. After implementing and training the deep networks, the obtained results were compared with the results of popular network models.
+The research aspect is the analysis of the impact of hyperparameters of the elements of the created model, training data sets and various natural language processing models on the process of conditional image generation.
+
+The image generator model based on text descriptions is a combination of the diffusion method and GAN networks.
+
+The architecture consists of the following elements:
+
+- VQ-VAE – a variational autoencoder using vector quantization (Vector Quantized Variational Autoencoder). It allows the modeling of discrete representations of hidden data, which is a key feature in the task of image generation. It is composed of an encoder that transforms input data into implicit representations and a decoder that performs the reverse operation. During the quantization process, continuous implicit representations are replaced with the closest vector from the dictionary.
+- Discriminator - serves as an additional assessment of the quality of reconstructed images by VQ-VAE, which in this case can be considered a generator. It activates after a user-set training step and helps generate sharper results. The traditional discriminator most often evaluates the entire output image from the generator, while the one used in the model checks the probability whether the sample is artificial based on its individual sections.
+- Conditional U-Net – this is the main element designed to generate images based on text descriptions loaded by the user. It consists of downsampling, intermediate processing and upsampling blocks. Additionally, a text condition was added by implementing an attention mechanism - self-attention and cross-attention. Self-attention allows the model to analyze the relationships between different parts of the image to obtain a better representation of the data. This is done by transforming and running the sample through a normalization layer, and then drawing attention to different objects based on their interdependencies. This result is recombined with the original image to form the output tensor. Cross-attention gives the network the ability to pay attention to textual information. As in the previous mechanism, the data is normalized and then the text embeddings are transferred to the attention module, where they are transformed into contextual representations. They are then combined with the original images to create tensors that enable the model to generate images conditioned by a specific description. Each U-net block uses the "SiLU" activation function and has additional linear layers for time and text embeddings.
+- Linear noise scheduler – an element used to control and regulate the process of diffusion and denoising of input data. Manages the amount of linear noise added for each iteration step of the operation.
+- CLIP – Contrastive Language-Image Pre-training is a neural network created by OpenAI to understand the relationship between text and image. It is trained on an image-text pair of data. It allows the model to process information from both types of data. The model consists of two parts:
+- CLIPTokenizer – a tokenizer that transforms a text string into a list of identifiers, then maps them to their corresponding indexes in a dictionary, and then tags them in order to create a consistent context.
+- CLIPTextModel – part supporting language processing. It takes a tokenized sequence of data to process it through a transformer, creating complex relationships and contexts within the description. In the next step, representations of words are generated taking into account their meaning in sentences in order to encode them in the form of feature vectors - otherwise known as text embeddings - using the "zero-shot" method. Finally, they are compared with visual representations in the common space of images and text.
+
+Results:
+![Bez tytułu](https://github.com/user-attachments/assets/188a2d34-43b8-49dd-83d8-a6c23b153be9)
